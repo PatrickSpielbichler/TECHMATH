@@ -1,0 +1,39 @@
+%%% Local Variables:
+%%% TeX-master: "num-ue06"
+%%% End:
+
+\begin{exercise}
+  Sei $f \in C([0,3])$. Bestimmen Sie die interpolatorische Quadraturformel der Form
+
+  \begin{equation*}
+     Q_3(f):=\alpha_0f(0)+\alpha_1f(1)+\alpha_2f(2)+\alpha_3f(3)
+  \end{equation*}
+  zur Approximation des Integrals $Q(f)=\int_0^3{f(x) \dif x}$. Welche Ordnung hat diese Quadraturformel?
+\end{exercise}
+\begin{proof}
+  Aus dem Skriptum wissen wir, dass $\alpha_j=\int_0^3{L_j(x) \dif x}$ gilt. Damit können wir die Gewichte ausrechnen:
+
+  \begin{equation*}
+    \begin{split}
+      \alpha_0&=\int_0^3{\frac{(x-1)(x-2)(x-3)}{(0-1)(0-2)(0-3)} \dif x} = \frac{3}{8} \\
+      \alpha_1&=\int_0^3{\frac{(x-0)(x-2)(x-3)}{(1-0)(1-2)(1-3)} \dif x} = \frac{9}{8} \\
+      \alpha_2&=\int_0^3{\frac{(x-0)(x-1)(x-3)}{(2-0)(2-1)(2-3)} \dif x} = \frac{9}{8} \\
+      \alpha_3&=\int_0^3{\frac{(x-0)(x-1)(x-2)}{(3-0)(3-1)(3-2)} \dif x} = \frac{3}{8} \\
+    \end{split}
+  \end{equation*}
+  Das heißt, die Quadraturformel lautet
+
+  \begin{equation*}
+    Q_3(f)=\frac{3}{8}(f(0)+3f(1)+3f(2)+f(3)).
+  \end{equation*}
+
+  Wir wissen, dass diese Quadraturformel mindestens die Ordnung $4$ hat, da sie alle Polynome mit Grad $\leq 3$ exakt integriert. Wir zeigen noch, dass die Quadraturformel genau Ordnung $4$ hat indem wir ein Polynom vom Grad $f$ finden, das nicht exakt integriert wird. Mit $p(x):=x^4$ ist so ein Polynom gefunden, denn es gilt:
+
+  \begin{equation*}
+    Q(p)=\int_0^3{x^4 \dif x} = \frac{3^5}{5}=48,6
+  \end{equation*}
+  aber
+  \begin{equation*}
+    Q_3(p)=\frac{3}{8}(0 + 3 + 3\cdot 2^4 + 3^4)=49,5.
+  \end{equation*}
+\end{proof}

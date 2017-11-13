@@ -1,0 +1,27 @@
+%%% Local Variables:
+%%% TeX-master: "num-ue06"
+%%% End:
+
+\begin{exercise}
+  Sei $Q_n(f)$ die Interpolationsquadratur auf dem Intervall $[0,1]$ zu den Stützstellen $x_j=\frac{j}{n}$ für $j=0,\dots,n$. Zeigen Sie: $Q_n(f)$ hat die Ordnung $n+2$ wenn $n$ gerade ist.
+
+  Hinweis: Verwenden Sie die Newton-Basispolynome.
+\end{exercise}
+\begin{proof}
+  Da $Q_n(f)$ eine Interpolationsquadratur mit $n+1$ verschiedenen Stützstellen ist, hat $Q_n$ mindestens die Ordnung $n+1$. Wir zeigen, dass $Q_n$ für gerades $n$ mindestens Ordnung $n+2$ hat indem wir zeigen, dass $N_{n+1}$ exakt integriert wird. Jedenfalls gilt $Q_n(N_{n+1})=0$, da das Newtonpolynom genau bei den Stützstellen Nullstellen hat. Wir zeigen, dass $Q(N_{n+1})=0$ gilt, indem wir zeigen, dass $N_{n+1}$ um $\frac{1}{2}$ antisymmetrisch ist. Das heißt wir wollen zeigen, dass für $x \in [0,\frac{1}{2}]$ gilt: $N_{n+1}(\frac{1}{2}+x)=-N_{n+1}(\frac{1}{2}-x)$:
+
+  \begin{equation*}
+    \begin{split}
+      N_{n+1}(\frac{1}{2}+x)
+      &=\prod_{i=0}^n{(\frac{1}{2}+x - \frac{i}{n})} \\
+      &\stackrel{n \text{gerade}}{=} -{(-1)}^{n+1} \prod_{i=0}^n{(\frac{1}{2}+x - \frac{i}{n})} \\
+      &=-\prod_{i=0}^n{(-\frac{1}{2}-x + \frac{i}{n})} \\
+      &\stackrel{\prod \text{umdrehen}}{=} -\prod_{i=0}^n{(-\frac{1}{2}-x + \frac{n-i}{n})} \\
+      &=-\prod_{i=0}^n{-x + \frac{-n+2n-2i}{2n}} \\
+      &=-\prod_{i=0}^n{\frac{1}{2}-x - \frac{i}{n}} \\
+      &=-N_{n+1}(\frac{1}{2}-x).
+    \end{split}
+  \end{equation*}
+
+  Da $N_{n+1}$ um $\frac{1}{2}$ antisymmetrisch ist, gilt $\int_0^{\frac{1}{2}}{N_{n+1}(x) \dif x}=-\int_{\frac{1}{2}}^1{N_{n+1}(x) \dif x}$, also $Q(N_{n+1})=\int_0^1{N_{n+1}(x) \dif x} = 0$. Da die Newton-Polynome eine Basis bilden, folgt die exakte Integrierbarkeit aller Polynome vom Grad $n+1$ aus der Linearität des Integrals. Damit hat $Q_n$ mindestens Ordnung $n+2$.
+\end{proof}

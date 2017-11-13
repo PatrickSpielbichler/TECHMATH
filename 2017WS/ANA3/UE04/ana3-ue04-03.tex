@@ -1,0 +1,56 @@
+%%% Local Variables:
+%%% TeX-master: "ana3-ue04"
+%%% End:
+
+\begin{exercise}
+  Zeigen Sie mit genauer Begründung aller nichtelementaren Rechenschritte für \linebreak $\abs{a}<1$
+
+  \begin{equation*}
+    \int_0^1{\frac{1-t}{1-at^3} \dif t}=\sum_{n=0}^\infty{\frac{a^n}{(3n+1)(3n+2)}}
+  \end{equation*}
+
+  und zeigen Sie damit
+
+  \begin{equation*}
+    \frac{\pi}{3\sqrt{3}}=\sum_{n=0}^\infty{\frac{1}{(3n+1)(3n+2)}}.
+  \end{equation*}
+\end{exercise}
+\begin{proof}
+  Mit $\abs{a}<1$ gilt für den Integranden mit der Formel für geometrische Reihen für \linebreak $0 \leq t \leq 1$
+
+  \begin{equation*}
+    \abs{\frac{1-t}{1-at^3}}
+    ={\abs{(1-t)}}{\sum_{n=0}^\infty{a^n t^{3n}}}
+    \leq \sum_{n=0}^\infty{a^n}
+    < \infty.
+  \end{equation*}
+
+  Damit ist eine auf $[0,1]$ integrierbare Majorante der Partialsummen der Reihe gefunden und wir können mit Hilfe des Satzes von der dominierten Konvergenz Summation und Integration vertauschen:
+
+  \begin{equation*}
+    \int_0^1{\frac{1-t}{1-at^3}\dif t}
+    =\sum_{n=0}^\infty{a^n\int_0^1{(1-t)t^{3n} \dif t}}
+    =\sum_{n=0}^\infty{a^n\eval{\frac{t^{3n+1}}{3n+1} - \frac{t^{3n+2}}{3n+2}}_{t=0}^{t=1}}
+    =\sum_{n=0}^\infty{\frac{a^n}{(3n+1)(3n+2)}}.
+  \end{equation*}
+
+  Wir haben nun die Gleichheit für $\abs{a}<1$ gezeigt. Für $a=1$ konvergiert die Reihe allerdings auch. Nach dem Abelschen Grenzwertsatz gilt also
+
+  \begin{equation*}
+    \lim_{a\to 1^-}\int_0^1{\frac{1-t}{1-at^3}\dif t}
+    =\sum_{n=0}^\infty{\frac{1}{(3n+1)(3n+2)}}.
+  \end{equation*}
+
+  Da $a \mapsto \frac{1-t}{1-at^3}$ für fast alle $0 \leq t \leq 1$ stetig in $a=1$ und für alle $0 \leq a \leq 1$ integrierbar ist, können wir Limes und Integration vertauschen. Somit folgt
+
+  \begin{equation*}
+    \begin{split}
+    \sum_{n=0}^\infty{\frac{1}{(3n+1)(3n+2)}}
+    =\int_0^1{\frac{1-t}{1-t^3}\dif t}
+    &=\eval{\frac{2}{\sqrt{3}}\arctan(\frac{1}{3}(2t+1)\sqrt{3})}_{t=0}^{t=1} \\
+    &=\frac{2}{\sqrt{3}}(\arctan(\sqrt{3})-\arctan(\frac{1}{\sqrt{3}})) \\
+    &=\frac{2}{\sqrt{3}}(\frac{1}{3} \pi- \frac{1}{6}\pi)\\
+    &=\frac{\pi}{3\sqrt{3}}.
+    \end{split}
+  \end{equation*}
+ \end{proof}

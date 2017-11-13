@@ -1,0 +1,45 @@
+%%% Local Variables:
+%%% TeX-master: "ana3-ue04"
+%%% End:
+
+\begin{exercise}
+  Zeigen Sie mit genauer Begründung aller nichtelementaren Rechenschritte für $p,q>0$
+
+  \begin{equation*}
+    \int_0^1{\frac{x^{p-1}}{1+x^q} \dif x}=\sum_{n=0}^\infty{\frac{{(-1)}^n}{p+nq}}
+  \end{equation*}
+
+  und zeigen Sie damit
+
+  \begin{equation*}
+    \frac{\pi}{4}=\sum_{n=0}^\infty{\frac{{(-1)}^n}{2n+1}}.
+  \end{equation*}
+
+\end{exercise}
+
+\begin{proof}
+  Wir betrachten den Integranden und folgern für $\abs{x}<1$ mit Hilfe der Formel für geometrische Reihen
+
+  \begin{equation*}
+    \frac{x^{p-1}}{1+x^q}
+    = \frac{x^{p-1}}{1-(-x^q)}
+    = x^{p-1}\sum_{n=0}^\infty{{(-1)}^n x^{qn}}
+  \end{equation*}
+
+  Nach dem Leibniz-Kriterium und wegen $q>0$ ist die Reihe konvergent mit der Fehlerabschätzung $0 \leq 1-x^q \leq \sum_{n=0}^\infty{{(-1)}^n x^{qn}} \leq 1-x^q+x^{2q} \leq 1$. Da $x^{p-1}$ für $p>0$ auf $[0,1]$ integrierbar ist, sind die Partialsummen dieser Reihe auf $[0,1)$ (also auf $[0,1]$ bis auf eine Nullmenge) durch eine integrierbare Funktion majorisiert. Nach dem Satz der dominierten Konvergenz können wir also Integration und Summation vertauschen. Damit folgt
+
+  \begin{equation*}
+    \int_0^1{\frac{x^{p-1}}{1+x^q} \dif x}
+    = \sum_{n=0}^\infty{\int_0^1{{(-1)}^n x^{qn+p-1} \dif x}}
+    = \sum_{n=0}^\infty{{(-1)}^n \eval{\frac{x^{qn+p}}{qn+p}}_{x=0}^{x=1}}
+    = \sum_{n=0}^\infty{\frac{{(-1)}^n}{p+nq}}.
+  \end{equation*}
+
+  Durch Einsetzen von $p=1,q=2$ folgt sofort
+
+  \begin{equation*}
+    \sum_{n=0}^\infty{\frac{{(-1)}^n}{2n+1}}
+    = \int_0^1{\frac{1}{1+x^2}\dif x}
+    = \eval{\arctan(x)}_{x=0}^{x=1}=\arctan(1)=\frac{\pi}{4}.
+  \end{equation*}
+\end{proof}

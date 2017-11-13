@@ -1,0 +1,37 @@
+%%% Local Variables:
+%%% TeX-master: "ana3-ue04"
+%%% End:
+
+\begin{exercise}
+  Sei $(M,d)$ ein metrischer Raum. Dann ist $M \times M$ mit der Maximumsmetrik
+
+  \begin{equation*}
+    d_m((x_1,x_2),(y_1,y_2)):=\max(d(x_1,y_1),d(x_2,y_2))
+  \end{equation*}
+  ein metrischer Raum und für eine Vervollständigung $(\widetilde{M},\widetilde{d})$ von $M$ ist $\widetilde{M} \times \widetilde{M}$ mit der Maximumsmetrik eine Vervollständigung von $M \times M$.
+\end{exercise}
+
+\begin{proof}
+  Die Metrikeigenschaften von $d_m$ folgen sofort aus den entsprechenden Metrikeigenschaften von $d$ und aus $\max(a+b,c+d) \leq \max(a,c)+\max(b,d)$. Also ist $M \times M$ ein metrischer Raum.
+
+  Da es für jeden metrischen Raum $M$ eine Vervollständigung $\widetilde{M}$ gibt, existiert eine lineare Isometrie $\iota:M \to X$ wobei $X$ ein dichter Teilraum von $\widetilde{M}$ ist. Wir definieren
+
+  \begin{equation*}
+    \fullfunction{\alpha}{M \times M}{X \times X}{(x_1,x_2)}{(\iota(x_1),\iota(x_2))}
+  \end{equation*}
+  und zeigen, dass $\alpha$ eine Isometrie ist:
+
+  \begin{equation*}
+    \begin{split}
+      \widetilde{d_m}(\alpha(x_1,x_2), \alpha(y_1,y_2))
+      &= \widetilde{d_m}((\iota(x_1),\iota(x_2)),(\iota(y_1),\iota(y_2))) \\
+      &= \max(\widetilde{d}(\iota(x_1),\iota(y_1)),\widetilde{d}(\iota(x_2),\iota(y_2))) \\
+      &= \max(\widetilde{d}(x_1,y_1),\widetilde{d}(x_2,y_2)) \\
+      &= \widetilde{d_m}((x_1,x_2),(y_1,y_2)).
+    \end{split}
+  \end{equation*}
+
+  Sei nun $(x_n,y_n)$ eine Cauchyfolge in $\widetilde{M} \times \widetilde{M}$ bezüglich $\widetilde{d_m}$, also gibt es für $\varepsilon>0$ ein $n_0 \in \N$, sodass für alle $n,m \geq n_0$ gilt: $\widetilde{d_m}((x_n,y_n),(x_m,y_m))<\varepsilon$. Damit folgt sofort $\widetilde{d}(x_n,x_m)<\varepsilon$ und $\widetilde{d}(y_n,y_m)<\varepsilon$. Also sind $(x_n),(y_n)$ Cauchyfolgen in $\widetilde{M}$. Wegen der Vollständigkeit von $\widetilde{M}$ konvergieren $(x_n)$ und $(y_n)$ mit $x:=\lim_{n \to \infty}{x_n},y:=\lim_{n \to \infty}{y_n}$. Damit konvergiert auch $(x_n,y_n)$ bezüglich der Maximumsmetrik in $\widetilde{M} \times \widetilde{M}$ gegen $(x,y)$. Also ist $\widetilde{M} \times \widetilde{M}$ vollständig.
+
+  Es bleibt noch zu zeigen, dass $\alpha$ in einen dichten Teilraum von $\widetilde{M} \times \widetilde{M}$ abbildet. Da $X$ dicht in $\widetilde{M}$ liegt, liegt auch $X \times X$ dicht in $\widetilde{M} \times \widetilde{M}$, denn sei $(x,y) \in \widetilde{M} \times \widetilde{M}$. Dann existieren $p,q \in X$ mit $\widetilde{d}(x,p)<\varepsilon$ und $\widetilde{d}(y,q)<\varepsilon$. Nach der Definition der Maximumsmetrik gilt dann auch $\widetilde{d_m}((x,y),(p,q)) < \varepsilon$. Das heißt $\alpha(M \times M)=X \times X$ liegt dicht in $\widetilde{M} \times \widetilde{M}$.
+\end{proof}
