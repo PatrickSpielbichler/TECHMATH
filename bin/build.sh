@@ -2,23 +2,38 @@
 echo "Starting LaTeX builds"
 mkdir _build
 
-for semester in ./*/
+for semester in ./src/*/
 do
     cd ${semester}
-    for subject in ${semester}*/
+    semester=${semester%*/}
+    semester=${semester##*/}
+
+    mkdir ../../_build/${semester}
+    for subject in ./*/
     do
         cd ${subject}
-        for exercise in ${semester}${subject}*/
+        subject=${subject%*/}
+        subject=${subject##*/}
+
+        mkdir ../../../_build/${semester}/${subject}
+
+        for exercise in ./*/
         do
-            cd ${exercise}
-            filename=${subject,,}-${exercise,,}
-            pdflatex -interaction=nonstopmode -halt-onerror ${filename}.tex
-            cp ${filename}.pdf ../../../_build/${semester}${subject}
-            cd ..
+            if [ -d ${exercise} ];then
+                cd ${exercise}
+                exercise=${exercise%*/}
+                exercise=${exercise##*/}
+                filename=${subject,,}-${exercise,,}
+                if [ -f ${filename}.tex ]; then
+                    pdflatex -interaction=nonstopmode -halt-on-error ${filename}.tex
+                    mv ${filename}.pdf ../../../../_build/${semester}/${subject}/${filename}.pdf
+                fi
+                cd ../
+            fi
         done
         cd ..
     done
-    cd ..
+    cd ../..
 done
 
 echo "Finished LaTeX builds"
