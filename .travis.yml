@@ -5,8 +5,12 @@ before_install:
   texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended texlive-lang-german texlive-math-extra
 script:
 - mkdir _build _build/2017WS _build/2017WS/ANA3/ _build/2017WS/NUM/
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build/2017WS/ANA3/ 2017WS/ANA3/UE04/ana3-ue04.tex
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build/2017WS/NUM/ 2017WS/NUM/UE06/num-ue06.tex
+- cd 2017WS/ANA3/UE04
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build/2017WS/ANA3/ ana3-ue04.tex
+- cd ../../..
+- cd 2017WS/NUM/UE06
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build/2017WS/NUM/ num-ue06.tex
+- cd ../../..
 after_script:
 - chmod +x ./bin/upload.sh
 - chmod +x ./bin/gdrive
