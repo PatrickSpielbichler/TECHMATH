@@ -1,0 +1,19 @@
+sudo: required
+dist: trusty
+before_install:
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
+  texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+script:
+- mkdir _build
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build 2017WS/ANA3/ana3-ue04.tex
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build 2017WS/NUM/num-ue06.tex
+deploy:
+  provider: releases
+  api_key:
+    secure: kbgjhaatvEvFbyIfC12ekl0AL/3OOa7m1Y9P/GN+2Y0/OIPLsir7kLEDtTMkfDeinan28wtUHCeq3jQJLbcQ/GU14e4XldyT3fMKED1TqK8mcCNf9HGRRv5WttNupoch6MyaSDwrwcq1ngYTesA0K2lDnBkhNj0lWexEvH4ji/UfxDZmcufv2A1TQw1rijITMJfGCGpfB0U/4BpksVdAuBjHBGJAtSp/jbESvabPR48wdN6ES6YfyO0/cX/ql4ttWSzzpkmVP91ZkLQiimDVALx/YbhbYtHetEAIBqd9l6fuXf/633P7hfW4VE5rjUfWz8Jsm40ahOInZrUmgzIG/nySe7uMVVp65Be/NxyAkEqwsiD0FDQpi4OiivPpsVkuj9pajvDJ9NzXEkMlZ2P/Z+WFgstB/2DhxKV/PsIoYEcqZSVbxMIAy0y4WUY4aWApvEaZi59dS3tuBCQPcuOLY4vKH6AK6XukvhOcAhklzsM77a3D8gCQe7ApNW/8rQdbSWFayfOfCwQnKaINAwJ9wP/WS1eHiM1m/pQIJXsQpOQeMaw0vlzMLJ83W4Ajgo7nADxUX5FyjxYW70UzrmENMqvFv0E8FLMse6NNV9KVsl8nP6kxw3xONgQO0nx11fxv+S4r0kfLk+CAHU46kOrYTizajbCQ+xZy+N0f4JyULo4=
+  file:
+    - _build/ana3-ue04.pdf
+    - _build/num-ue06.pdf
+  skip_cleanup: true
+  on:
+    tags: true

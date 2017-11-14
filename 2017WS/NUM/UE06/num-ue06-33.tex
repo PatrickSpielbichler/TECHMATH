@@ -9,14 +9,14 @@
   Laut Skriptum gibt es die Darstellung
 
   \begin{equation*}
-    Q(f)-Q_n(f)=\int_a^b{f[a,\frac{a+b}{2},b,x](x-a)(x-b)(x-\frac{a+b}{2}) \dif x}.
+    Q(f)-Q_2(f)=\int_a^b{f[a,\frac{a+b}{2},b,x](x-a)(x-b)(x-\frac{a+b}{2}) \dif x}.
   \end{equation*}
 
-  Der Term $x-\frac{a+b}{2}$ hat einen Vorzeichenwechsel auf $[a,b]$, daher können wir den Mittelwert der Integralrechnung nicht direkt anwenden. Stattdessen addieren und subtrahieren wir ein $f[a,\frac{a+b}{2},\frac{a+b}{2},b]$ und erweitern mit $(x-\frac{a+b}{2})$ und wenden dann den Mittelwertsatz der Integralrechnung an:
+  Der Term $x-\frac{a+b}{2}$ hat einen Vorzeichenwechsel auf $[a,b]$, daher können wir den Mittelwertsatz der Integralrechnung nicht direkt anwenden. Stattdessen addieren und subtrahieren wir ein $f[a,\frac{a+b}{2},\frac{a+b}{2},b]$ und erweitern mit $(x-\frac{a+b}{2})$ und wenden dann den Mittelwertsatz der Integralrechnung an:
 
   \begin{equation*}
     \begin{split}
-      Q(f)-Q_n(f)
+      Q(f)-Q_2(f)
       &=\int_a^b{\frac{f[a,\frac{a+b}{2},b,x]-f[a,\frac{a+b}{2},\frac{a+b}{2},b]}{x-\frac{a+b}{2}}(x-a)(x-b){\left(x-\frac{a+b}{2}\right)}^2 \dif x} \\
       &+f[a,\frac{a+b}{2},\frac{a+b}{2},b]\underbrace{\int_a^b{(x-a)(x-b)(x-\frac{a+b}{2}) \dif x}}_{=0} \\
       &= f[a,\frac{a+b}{2},\frac{a+b}{2},b,\xi]\int_a^b{(x-a)(x-b){\left(x-\frac{a+b}{2}\right)}^2 \dif x} \\
