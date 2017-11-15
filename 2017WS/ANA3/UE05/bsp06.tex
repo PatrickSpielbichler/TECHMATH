@@ -3,16 +3,19 @@
 %%% End:
 
 \begin{exercise}
-	Bestimmen Sie die Koeffizienten der Reihendarstellung 
-	\begin{equation*}
-		f(x) := \sum_{n=1}^\infty b_n sin(n \frac{\pi}{T} x), x \in [-T, T] \\	
-	\end{equation*}
-	für die Funktion $f: [-T, T] \to \R, f(x) = x$ und damit
-	\begin{equation*}
-	\sum_{n=1}^\infty \frac{1}{n^2}
-	\end{equation*}
+	Zeigen Sie, dass es keine nichttriviale Funktion in $L^1(\mathbb{T})$ gibt, die wie ihre Fouriertransformierte kompakten Träger hat.
 \end{exercise}
 
 \begin{proof}
+	Sei $f \in L^1 (\mathbb{T} )$, wobei $f^\wedge $ kompakten Träger hat. Wir wollen zeigen, dass f selbst keinen kompakten Träger hat.
+	
+	Wir werden nun die Definition der Fouriertransformierten betrachten:
+	\begin{equation*}
+	f^\wedge(\xi) := \frac{1}{(2\pi)^{\frac{n}{2}}} \int_{\R^n} e^{i\xi x} f(x) d\lambda^n(x)
+	\end{equation*}
+	
+	Wenn $f^\wedge$ nun kompakten Träger hat, so gilt: $\exists K  \text{kompakt} \subset \R : \forall x \in \R \backslash K : f^\wedge(x) = 0$.
+	
+	....
 	
 \end{proof}

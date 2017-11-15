@@ -20,6 +20,8 @@ Damit können wir nun arbeiten:
 \begin{split}
 D_N \star D_N(x) & = \int_\R \sum_{k=-N}^{N} e^{ik(x-y)} \sum_{j=-N}^{N} e^{ijy} d\lambda (y) \\
 & = \int_\R \sum_{k=-N}^{N} e^{ik(x-y)} \sum_{j=-N}^{N} e^{ijy} d\lambda (y) \\
+& = \int_\R \sum_{k=-N}^{N} \sum_{j=-N}^{N} e^{ik(x-y)} e^{ijy} d\lambda (y) \\
+& = \sum_{k=-N}^{N} \sum_{j=-N}^{N} \int_\R e^{ik(x-y)} e^{ijy} d\lambda (y) \\
 & = \sum_{k=-N}^{N} e^{ikx} \sum_{j=-N}^{N} \int_\R e^{iy(j-k)} d\lambda (y) \\
 \end{split}
 \end{equation*}
