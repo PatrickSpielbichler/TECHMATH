@@ -31,7 +31,10 @@ tlmgr install   \
   exam          \
   amsfonts      \
   stmaryrd      \
-  amsmath
+  amsmath       \
+  texlive-latex-base \
+  ngerman       \
+  commath       \
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
