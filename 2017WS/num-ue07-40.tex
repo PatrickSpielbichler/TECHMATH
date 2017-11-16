@@ -1,0 +1,50 @@
+\begin{exercise}
+Beweise für die Spaltensummennorm (Satz 5.6): Sind (V, $\normE{.}{V}$) und (W, $\normE{.}{W}$) mit der Betragssummennorm $\normE{.}{1}$ versehen, so ist die zugehörige Matrixnorm  durch 
+\begin{equation*}
+\normE{A}{1} = \max_{j=1...n} \sum_{i=1}^{m} | a_{ij} | =: \gamma
+\end{equation*}
+\end{exercise}
+
+\begin{proof}
+Wir gehen ähnlich wie in Satz 5.4 vor. Betrachten wir also $x \in \R^n$ beliebig:
+\begin{equation*}
+\begin{split}
+\normE{Ax}{1} & = \sum_{i=1}^{m} | \sum_{j=1}^{n} a_{ij} x_j | \\ 
+& \le \sum_{i=1}^{m} \sum_{j=1}^{n} | a_{ij} | | x_j | \\
+& = \sum_{j=1}^{n} | x_j | \sum_{i=1}^{m} | a_{ij} | \\
+& \le \sum_{j=1}^{n} | x_j | \max_{k=1...n} \sum_{i=1}^{m} | a_{kj} | \\
+& = \normE{x}{1} \gamma
+\end{split}
+\end{equation*}
+
+Somit haben wir gezeigt, weil x beliebig:
+\begin{equation*}
+\sup_{x \in \R^n \backslash \{0\}} \frac{\normE{Ax}{1}}{\normE{x}{1}} \le \max_{j=1...n} \sum_{i=1}^{m} | a_{ij} |
+\end{equation*}
+
+
+<<<<<<< HEAD
+Nun müssen wir noch die Gleichheit zeigen:
+=======
+Nun müssen wir noch die andere Richtung zeigen:
+>>>>>>> 5313105... Add Numerik Uebung 7 + Beispiel 40 fertig
+Dazu suchen wir den Index $l_0$, mit dem gilt:
+\begin{equation*}
+\sum_{i=1}^{m} | a_{il_o} | = \max_{j=1...n} \sum_{i=1}^{m} | a_{ij} |
+\end{equation*}
+
+Dann gilt für $\hat{x} := e_{l_0}$ ($l_0$-ter Einheitsvektor): $\normE{\hat{x}}{1} = 1$ und damit weiter:
+\begin{equation*}
+\begin{split}
+\normE{A\hat{x}}{1} & = \sum_{i=1}^{m} | \sum_{j=1}^{n} a_{ij} x_j | \\ 
+& = \sum_{i=1}^{m} | a_{il_0} | \\
+& = \max_{j=1...n} \sum_{i=1}^{m} | a_{ij} | \\
+\end{split}
+\end{equation*}
+
+Somit gilt also für jede Matrix A die Gleichheit. Damit haben wir gezeigt:
+\begin{equation*}
+\sup_{x \in \R^n \backslash \{0\}} \frac{\normE{Ax}{1}}{\normE{x}{1}} = \max_{j=1...n} \sum_{i=1}^{m} | a_{ij} |
+\end{equation*}
+
+\end{proof}
