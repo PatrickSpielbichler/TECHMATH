@@ -1,18 +1,83 @@
 %%% Local Variables:
-%%% TeX-master: "ana3-ue04"
+%%% TeX-master: "ana3-ue05"
 %%% End:
 
 \begin{exercise}
-	Bestimmen Sie die Koeffizienten der Reihendarstellung 
-	\begin{equation*}
-		f(x) := \sum_{n=1}^\infty b_n sin(n \frac{\pi}{T} x), x \in [-T, T] \\	
-	\end{equation*}
-	für die Funktion $f: [-T, T] \to \R, f(x) = x$ und damit
-	\begin{equation*}
-	\sum_{n=1}^\infty \frac{1}{n^2}
-	\end{equation*}
+  Eine Funktion $f$ aus $L^1(\R)$ deren Fourier\-trans\-form\-ierte Träger in $[-T,T]$ hat, ist durch ihre Werte auf $n \pi / T$ bestimmt, denn es gilt
+  \begin{equation*}
+    f(y)=\sum_{n \in \Z}{f\left(\frac{n \pi}{T}\right)\frac{\sin(n\pi - yT)}{n\pi - yT}}.
+  \end{equation*}
+
+  Zeigen sie zuerst, dass für die Fourierkoeffizienten $c_n$ der Einschränkung von $\fouriertransform{f}$ auf $[{-T},T]$, d.h.
+  \begin{equation*}
+    \fouriertransform{f}(\omega)=\frac{1}{\sqrt{2T}}\sum_{n \in \Z}{c_n \exp \left( \frac{\i n \pi \omega}{T} \right)}
+  \end{equation*}
+  gilt: $c_n=\sqrt{\frac{\pi}{T}}f\left(-n\frac{\pi}{T}\right)$, wobei $\fouriertransform{f}$ die Fouriertransformation von $f$ auf $\R$ bezeichnet. Verwenden Sie dann
+  \begin{equation*}
+    f(y)=\frac{1}{\sqrt{2\pi}}\int_{-T}^T{\fouriertransform{f}(x)\exp(\i yx) \dif x}
+  \end{equation*}
 \end{exercise}
 
 \begin{proof}
-	
+  Wir wissen nach dem Riemann-Lebesgue-Lemma, dass die Fouriertransformierte $\fouriertransform{f}$ eine stetige Funktion ist, die im Unendlichen verschwindet.
+  Da wir zusätzlich wissen, dass der Träger von $\fouriertransform{f}$ in $[{-T},T]$ liegt, ist $\fouriertransform{f}$ eine Funktion mit kompaktem Träger.
+  Wegen der Stetigkeit von $\fouriertransform{f}$ wissen wir somit auch $\fouriertransform{f}(T)=\fouriertransform{f}(-T)=0$.
+  Damit können wir die Einschränkung von $\fouriertransform{f}$ auf $[{-T},T]$ als Funktion auf einem Torus mit Umfang $2T$ auffassen (also können wir $\fouriertransform{f}$ als $2T$-periodische Funktion auffassen).
+
+
+  Wir definieren $g(x):=\fouriertransform{f}(xT/\pi)$. $g$ ist eine Funktion auf $\T$ denn sie ist $2\pi$-periodisch, da
+  \begin{equation*}
+    g(x+2\pi)=
+    \fouriertransform{f}\left( \frac{(x+2\pi)T}{\pi} \right)
+    =\fouriertransform{f}\left(\frac{xT}{\pi} + 2T \right)
+    =\fouriertransform{f}\left(\frac{xT}{\pi}\right)
+    =g(x).
+  \end{equation*}
+  Da $\fouriertransform{f}$ stetig mit kompaktem Träger ist, ist auch $g$ stetig mit kompaktem Träger und daher in $L^2(\T)$. Damit konvergiert die Fourierreihe von $g$ gegen $g$, also gilt
+  \begin{equation*}
+    g(x)=\sum_{n \in \Z}{\fouriertransform{g}(n) \exp(\i nx)}.
+  \end{equation*}
+
+  Wegen der Definition von $g$ gilt $\fouriertransform{f}(\omega)=g(\omega \pi/T)$ und somit
+  \begin{equation*}
+    \fouriertransform{f}(\omega)=\sum_{n \in \Z}{\fouriertransform{g}(n) \exp \left( \frac{\i n\pi\omega}{T} \right)}
+  \end{equation*}
+  mit
+  \begin{equation*}
+    \begin{split}
+      \fouriertransform{g}(n)
+      &=\frac{1}{\sqrt{2\pi}} \int_{-\pi}^\pi{g(x)\exp(-\i nx) \dif x} \\
+      &=\frac{1}{\sqrt{2\pi}} \int_{-\pi}^\pi{\fouriertransform{f }\left( \frac{xT}{\pi} \right) \exp(-\i nx) \dif x} \\
+      &=\frac{1}{\sqrt{2\pi}} \int_{-T}^T{\fouriertransform{f}(y)\exp \left( -\frac{\i n \pi y}{T} \right) \frac{\pi}{T} \dif y} \\
+      &=\frac{1}{T}\sqrt{\frac{\pi}{2}}  \int_{-T}^T{\fouriertransform{f}(y)\exp \left( -\frac{\i n \pi y}{T} \right) \dif y}. \\
+    \end{split}
+  \end{equation*}
+
+  Da $\fouriertransform{f}$ stetig mit kompaktem Träger ist, ist $\fouriertransform{f}$ in $L^1(\R)$, also gelten die Umkehrformeln für die Fouriertransformation und somit folgt $\lambda$-fast überall
+  \begin{equation*}
+    \fouriertransform{g}(n)=\frac{1}{T}\sqrt{\frac{\pi}{2}} \sqrt{2 \pi} f \left( -\frac{n\pi}{T} \right)
+    = \frac{\pi}{T} f \left( -\frac{n\pi}{T} \right).
+  \end{equation*}
+
+  Wenden wir nochmals die Umkehrformel an so folgt
+  \begin{equation*}
+    \begin{split}
+      f(y)
+      &= \frac{1}{\sqrt{2\pi}} \int_{-T}^T{\fouriertransform{f}(x) \exp(\i yx) \dif x} \\
+      &= \frac{1}{\sqrt{2\pi}} \int_{-T}^T{\sum_{n \in \Z}{\frac{\pi}{T} f\left( -\frac{n\pi}{T} \right) \exp \left( \frac{\i n\pi x}{T} \right)} \exp(\i yx)\dif x} \\
+      &= \frac{1}{T} \sqrt{\frac{\pi}{2}} \int_{-T}^T{ \sum_{n \in \Z} {f \left( -\frac{n\pi}{T} \right) \exp \left( \i x \left( \frac{n\pi + yT}{T} \right) \right)} \dif x}.
+    \end{split}
+  \end{equation*}
+
+  Wegen $\dots$ können wir Integral und Summe vertauschen und es gilt
+  \begin{equation*}
+    \begin{split}
+      f(y)
+      &= \frac{1}{T} \sqrt{\frac{\pi}{2}} \sum_{n \in \Z}{f \left(-\frac{n\pi}{T}\right) \int_{-T}^T{\exp \left(\i x \left( \frac{n\pi + yT}{T} \right) \right) \dif x}} \\
+      &= \sqrt{\frac{\pi}{2}}\sum_{n \in \Z}{f \left(-\frac{n\pi}{T} \right) \left(\frac{\exp(\i(n\pi + yT)) - \exp(-\i(n\pi + yT))}{\i(n\pi + yT)} \right)} \\
+      &= \sqrt{\frac{\pi}{2}} \sum_{n \in \Z}{f \left(-\frac{n\pi}{T}\right)\frac{\sin(n\pi + yT)}{n\pi + yT}} \\
+      &= \sqrt{\frac{\pi}{2}} \sum_{n \in \Z}{f \left(\frac{n\pi}{T} \right) \frac{\sin(-n\pi + yT)}{-n\pi + yT}} \\
+      &= \sqrt{\frac{\pi}{2}} \sum_{n \in \Z}{f \left(\frac{n\pi}{T} \right) \frac{\sin(n\pi - yT)}{n\pi - yT}}.
+    \end{split}
+  \end{equation*}
 \end{proof}
