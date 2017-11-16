@@ -30,7 +30,8 @@ tlmgr install luatex
 tlmgr install   \
   amsfonts      \
   amsmath       \
-  hyphen-german \
+  german        \
+  babel-german  \
   commath
 
 # Keep no backups (not required, simply makes cache bigger)
