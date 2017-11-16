@@ -37,7 +37,7 @@ tlmgr install   \
   babel-german  \
   mathtools     \
   commath       \
-  xfrac
+  collection-fontsrecommended \
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
