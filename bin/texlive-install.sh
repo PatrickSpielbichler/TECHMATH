@@ -31,7 +31,8 @@ tlmgr install   \
   amsfonts      \
   amsmath       \
   hyphen-german \
-  commath
+  commath       \
+  fullpage
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
