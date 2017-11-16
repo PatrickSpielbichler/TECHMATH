@@ -1,5 +1,5 @@
 \begin{exercise}
-<<<<<<< HEAD
+
 Berechne $cond_\infty(A)$ für
 \begin{equation*}
 A = \left(
@@ -17,13 +17,13 @@ $\vdots$ & $\ddots$ & $\ddots$ & 1 & 1 \\
 \begin{proof}
 Die Konditionszahl einer Matrix ist definiert durch: $cond_\infty(A) = \normE{A}{\infty} \normE{A^{-1}}{\infty}$. Wir sehen bei der Matrix sofort, dass die Zeilensummennorm von A die Summe der Beträge der letzten Zeile ist. Also gilt: $\normE{A}{\infty} = n$
 
-Nun müssen wir uns mit dem Invertieren von A befassen. 
+Nun müssen wir uns mit dem Invertieren von A befassen.
 
 \begin{enumerate}
-	\item Als ersten Schritt addieren wir die letzte Spalte zu allen anderen.
-	\item Danach dividieren wir die ersten n-1 Spalten durch 2.
-	\item Als nächstes wenden wir iterativ die i-te Spalte mit dem Faktor -1/2 auf die Spalten i+1 bis n-1 an. Diese machen wir für $i \in {1, ..., n-2}$.
-	\item Nun wenden wir die Spalten 1 bis n-1 auf Spalte n mit dem Faktor -1 an.
+\item Als ersten Schritt addieren wir die letzte Spalte zu allen anderen.
+\item Danach dividieren wir die ersten n-1 Spalten durch 2.
+\item Als nächstes wenden wir iterativ die i-te Spalte mit dem Faktor -1/2 auf die Spalten i+1 bis n-1 an. Diese machen wir für $i \in {1, ..., n-2}$.
+\item Nun wenden wir die Spalten 1 bis n-1 auf Spalte n mit dem Faktor -1 an.
 \end{enumerate}
 Damit haben wir:
 \begin{equation*}
@@ -130,11 +130,4 @@ $\frac{1}{2}$ & $\frac{1}{4}$ & $\dots$ & $\frac{1}{2^{n-1}}$ & $\frac{1}{2^{n-1
 
 Wir merken schnell, dass die Zeilensummennorm gleich der Summe der Beträge in der ersten Zeile ist. Somit gilt $ \normE{A^{-1}}{\infty} = 1$. Daraus folgt: $cond_\infty(A) = n * 1 = n$
 
-=======
-
-\end{exercise}
-
-\begin{proof}
-	
->>>>>>> 5313105... Add Numerik Uebung 7 + Beispiel 40 fertig
 \end{proof}
