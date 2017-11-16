@@ -39,6 +39,8 @@ tlmgr install   \
   amsmath       \
   hyphen-german \
   commath       \
+  latexmk       \
+  pdftex-def
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
