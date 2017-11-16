@@ -32,6 +32,7 @@ tlmgr install   \
   latex-bin     \
   latexconfig   \
   latex-fonts   \
+  pdflatex      \
   exam          \
   amsfonts      \
   stmaryrd      \
