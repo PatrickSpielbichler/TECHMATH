@@ -1,10 +1,5 @@
-sudo: required
-dist: trusty
-before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-recommended texlive-lang-german texlive-math-extra
-script:
-- chmod +x ./bin/build.sh
-- ./bin/build.sh
+install: ./bin/texlive-install.sh
+script: ./bin/build.sh
 after_script:
 - chmod +x ./bin/upload.sh
 - chmod +x ./bin/gdrive
