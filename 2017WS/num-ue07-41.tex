@@ -1,0 +1,140 @@
+\begin{exercise}
+<<<<<<< HEAD
+Berechne $cond_\infty(A)$ für
+\begin{equation*}
+A = \left(
+\begin{tabular}{ccccc}
+1 & 0 & $\dots$ & 0 & 1 \\
+-1 & 1 & $\ddots$ & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 0 & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 1 & 1 \\
+-1 & $\dots$ & $\dots$ & -1 & 1 \\
+\end{tabular}
+\right) \in \R^{n\times n}
+\end{equation*}
+\end{exercise}
+
+\begin{proof}
+Die Konditionszahl einer Matrix ist definiert durch: $cond_\infty(A) = \normE{A}{\infty} \normE{A^{-1}}{\infty}$. Wir sehen bei der Matrix sofort, dass die Zeilensummennorm von A die Summe der Beträge der letzten Zeile ist. Also gilt: $\normE{A}{\infty} = n$
+
+Nun müssen wir uns mit dem Invertieren von A befassen. 
+
+\begin{enumerate}
+	\item Als ersten Schritt addieren wir die letzte Spalte zu allen anderen.
+	\item Danach dividieren wir die ersten n-1 Spalten durch 2.
+	\item Als nächstes wenden wir iterativ die i-te Spalte mit dem Faktor -1/2 auf die Spalten i+1 bis n-1 an. Diese machen wir für $i \in {1, ..., n-2}$.
+	\item Nun wenden wir die Spalten 1 bis n-1 auf Spalte n mit dem Faktor -1 an.
+\end{enumerate}
+Damit haben wir:
+\begin{equation*}
+\left(
+\begin{tabular}{ccccc}
+1 & 0 & $\dots$ & 0 & 1 \\
+-1 & 1 & $\ddots$ & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 0 & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 1 & 1 \\
+-1 & $\dots$ & $\dots$ & -1 & 1 \\
+\hline
+1 & 0 & $\dots$ & 0 & 0 \\
+0 & 1 & $\ddots$ & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 0 & $\vdots$ \\
+0 & $\ddots$ & $\ddots$ & 1 & 0 \\
+0 & $\dots$ & $\dots$ & 0 & 1 \\
+\end{tabular}
+\right)
+\mapsto
+\left(
+\begin{tabular}{ccccc}
+2 & 1 & $\dots$ & 1 & 1 \\
+0 & 2 & $\ddots$ & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 1 & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 2 & 1 \\
+0 & $\dots$ & $\dots$ & 0 & 1 \\
+\hline
+1 & 0 & $\dots$ & 0 & 0 \\
+0 & 1 & $\ddots$ & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 0 & $\vdots$ \\
+0 & $\ddots$ & $\ddots$ & 1 & 0 \\
+1 & $\dots$ & $\dots$ & 1 & 1 \\
+\end{tabular}
+\right)
+\mapsto
+\left(
+\begin{tabular}{ccccc}
+1 & $\frac{1}{2}$ & $\dots$ & $\frac{1}{2}$ & 1 \\
+0 & 1 & $\ddots$ & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & $\frac{1}{2}$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 1 & 1 \\
+0 & $\dots$ & $\dots$ & 0 & 1 \\
+\hline
+$\frac{1}{2}$ & 0 & $\dots$ & 0 & 0 \\
+0 & $\frac{1}{2}$ & $\ddots$ & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 0 & $\vdots$ \\
+0 & $\ddots$ & $\ddots$ & $\frac{1}{2}$ & 0 \\
+$\frac{1}{2}$ & $\dots$ & $\dots$ & $\frac{1}{2}$ & 1 \\
+\end{tabular}
+\right)
+\end{equation*}
+\begin{equation*}
+\mapsto
+\left(
+\begin{tabular}{ccccc}
+1 & 0 & $\dots$ & 0 & 1 \\
+0 & 1 & $\frac{1}{2}$ & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & $\frac{1}{2}$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 1 & 1 \\
+0 & $\dots$ & $\dots$ & 0 & 1 \\
+\hline
+$\frac{1}{2}$ & -$\frac{1}{4}$ & $\dots$ & -$\frac{1}{4}$ & 0 \\
+0 & $\frac{1}{2}$ & 0 & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 0 & $\vdots$ \\
+0 & $\ddots$ & $\ddots$ & $\frac{1}{2}$ & 0 \\
+$\frac{1}{2}$ & $\frac{1}{4}$ & $\dots$ & $\frac{1}{4}$ & 1 \\
+\end{tabular}
+\right)
+\mapsto
+\dots
+\mapsto
+\left(
+\begin{tabular}{ccccc}
+1 & 0 & $\dots$ & 0 & 1 \\
+0 & 1 & 0 & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 0 & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 1 & 1 \\
+0 & $\dots$ & $\dots$ & 0 & 1 \\
+\hline
+$\frac{1}{2}$ & -$\frac{1}{4}$ & $\dots$ & -$\frac{1}{2^{n-1}}$ & 0 \\
+0 & $\frac{1}{2}$ & -$\frac{1}{4}$ & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & -$\frac{1}{4}$ & $\vdots$ \\
+0 & $\ddots$ & $\ddots$ & $\frac{1}{2}$ & 0 \\
+$\frac{1}{2}$ & $\frac{1}{4}$ & $\dots$ & $\frac{1}{2^{n-1}}$ & 1 \\
+\end{tabular}
+\right)
+\mapsto
+\left(
+\begin{tabular}{ccccc}
+1 & 0 & $\dots$ & 0 & 0 \\
+0 & 1 & 0 & $\vdots$ & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 0 & $\vdots$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & 1 & 0 \\
+0 & $\dots$ & $\dots$ & 0 & 1 \\
+\hline
+$\frac{1}{2}$ & -$\frac{1}{4}$ & $\dots$ & -$\frac{1}{2^{n-1}}$ & -$\frac{1}{2^{n-1}}$ \\
+0 & $\frac{1}{2}$ & -$\frac{1}{4}$ & $\vdots$ & -$\frac{1}{2^{n-2}}$ \\
+$\vdots$ & $\ddots$ & $\ddots$ & -$\frac{1}{4}$ & $\vdots$ \\
+0 & $\ddots$ & $\ddots$ & $\frac{1}{2}$ & -$\frac{1}{2}$ \\
+$\frac{1}{2}$ & $\frac{1}{4}$ & $\dots$ & $\frac{1}{2^{n-1}}$ & $\frac{1}{2^{n-1}}$ \\
+\end{tabular}
+\right)
+\end{equation*}
+
+Wir merken schnell, dass die Zeilensummennorm gleich der Summe der Beträge in der ersten Zeile ist. Somit gilt $ \normE{A^{-1}}{\infty} = 1$. Daraus folgt: $cond_\infty(A) = n * 1 = n$
+
+=======
+
+\end{exercise}
+
+\begin{proof}
+	
+>>>>>>> 5313105... Add Numerik Uebung 7 + Beispiel 40 fertig
+\end{proof}
