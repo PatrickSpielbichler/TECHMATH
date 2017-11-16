@@ -6,7 +6,7 @@ cache:
     - /tmp/texlive
     - $HOME/.texlive
 script:
-  - chmod + x ./bin/build.sh
+  - chmod +x ./bin/build.sh
   - ./bin/build.sh
 after_script:
   - chmod +x ./bin/upload.sh
