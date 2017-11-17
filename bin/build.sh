@@ -26,6 +26,7 @@ do
                 filename=${subject,,}-${exercise,,}
                 if [ -f ${filename}.tex ]; then
                     /tmp/texlive/bin/x86_64-linux/pdflatex -interaction=nonstopmode -halt-on-error ${filename}.tex
+                    /tmp/texlive/bin/x86_64-linux/pdflatex -interaction=nonstopmode -halt-on-error ${filename}.tex
                     mv ${filename}.pdf ../../../../_build/${semester}/${subject}/${filename}.pdf
                 fi
                 cd ../
