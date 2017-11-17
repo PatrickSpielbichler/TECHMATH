@@ -9,14 +9,14 @@ do
     semester=${semester%*/}
     semester=${semester##*/}
 
-    mkdir ../../_build/${semester}
+    mkdir ../../_build/${TRAVIS_BRANCH}/${semester}
     for subject in ./*/
     do
         cd ${subject}
         subject=${subject%*/}
         subject=${subject##*/}
 
-        mkdir ../../../_build/${semester}/${subject}
+        mkdir ../../../_build/${TRAVIS_BRANCH}/${semester}/${subject}
 
         for exercise in ./*/
         do
