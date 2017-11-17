@@ -60,16 +60,28 @@
   \end{equation*}
 
   Wenden wir nochmals die Umkehrformel an so folgt
-  \begin{equation*}
+  \begin{equation}
+    \label{eq:integral-sum}
     \begin{split}
       f(y)
       &= \frac{1}{\sqrt{2\pi}} \int_{-T}^T{\fouriertransform{f}(x) \exp(\i yx) \dif x} \\
       &= \frac{1}{\sqrt{2\pi}} \int_{-T}^T{\sum_{n \in \Z}{\frac{\pi}{T} f\left( -\frac{n\pi}{T} \right) \exp \left( \frac{\i n\pi x}{T} \right)} \exp(\i yx)\dif x} \\
       &= \frac{1}{T} \sqrt{\frac{\pi}{2}} \int_{-T}^T{ \sum_{n \in \Z} {f \left( -\frac{n\pi}{T} \right) \exp \left( \i x \left( \frac{n\pi + yT}{T} \right) \right)} \dif x}.
     \end{split}
+  \end{equation}
+
+  Außerdem gilt wegen dem Riemann-Lebesgue-Lemma und mit Hilfe der Umkehrformeln $f \in C_0$.
+  Wegen $f \in L^1(\R)$ ist $f$ sogar uneigentlich Riemann-integrierbar und damit sind die Obersummen $O(f,Z)$ von $f$ konvergent, also insbesondere beschränkt.
+  Damit gilt die Abschätzung
+  \begin{equation*}
+    \abs{\sum_{n=-N}^N{f \left(- \frac{n\pi}{T} \right) \exp \left( \i x \left( \frac{n\pi + yT}{T} \right) \right)}}
+    \leq \sum_{n \in \Z}{\abs{f \left( -\frac{n\pi}{T} \right)}}
+    \leq O(f,Z)
+    < \infty.
   \end{equation*}
 
-  Wegen $\dots$ können wir Integral und Summe vertauschen und es gilt
+  Damit haben wir eine auf $[-T,T]$ integrierbare Majorante gefunden und wir können in (\ref{eq:integral-sum}) Integral und Summation vertauschen:
+
   \begin{equation*}
     \begin{split}
       f(y)
