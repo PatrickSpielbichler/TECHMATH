@@ -7,5 +7,17 @@
 \end{exercise}
 
 \begin{proof}
-
+  Wie bereits in Beispiel 5 gezeigt, gilt $\fouriertransform{f} \in L^1(\R)$.
+  Da $\fouriertransform{f}$ Träger in $[-T,T]$ hat, folgt
+  \begin{equation*}
+    P_T \fouriertransform{f}(x)
+    = \sum_{n \in \Z}{\fouriertransform{f}(x+2kT)}
+    = \fouriertransform{f}(x)
+    = \frac{1}{\sqrt{2T}} \sum_{n \in \Z}{\sqrt{\frac{\pi}{T}} \fouriertransform{\fouriertransform{f}}\left(n \frac{\pi}{T}\right)\exp\left(\i nx \frac{\pi}{T}\right)}.
+  \end{equation*}
+  Mit den Umkehrformeln gilt also
+  \begin{equation*}
+    \fouriertransform{f}(x)=\frac{1}{\sqrt{2T}}\sum_{n \in \Z}{\sqrt{\frac{\pi}{T}}f\left(-n\frac{\pi}{T}\right)\exp\left(\i n x\frac{\pi}{T}\right)}.
+  \end{equation*}
+  Die übrigen Schritte verlaufen dann analog zu Beispiel 5.
 \end{proof}
