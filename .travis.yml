@@ -1,6 +1,3 @@
-branches:
-  only:
-    - master
 install:
   - chmod +x ./bin/texlive-install.sh
   - ./bin/texlive-install.sh
