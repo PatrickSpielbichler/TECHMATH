@@ -30,21 +30,18 @@
   $\mathset{\alpha_j^{(n)}:j=0,\dots,n}=\mathset{\alpha_{n-j}^{(n)}:j=0,\dots,n}$.
 
   Laut Voraussetzung gilt $x_0^{(n)}< \cdots <x_n^{(n)}$, also auch $-x_n^{(n)}< \cdots < -x_0^{(n)}$.
-  Da die Menge der Quadraturpunkte gleich ist, folgt $x_j^{(n)}=-x_{n-j}^{(n)}$.
-
-  Für die Quadraturgewichte folgt dann
+  Da die Menge der Quadraturpunkte gleich ist, folgt $x_j^{(n)}=-x_{n-j}^{(n)}$. Für die Quadraturgewichte folgt dann
   \begin{equation*}
     \begin{split}
       \alpha_{n-j}^{(n)}
-      &= \int_{-1}^1{w(x)L_{n-j}^{(n)}(x) \dif x} \\
-      &= \int_{-1}^1{w(x)\prod_{\substack{i=0 \\ i \neq n-j}}^n{\frac{x-x_i^{(n)}}{x_{n-j}^{(n)}-x_i^{(n)}}} \dif x} \\
-      &= \int_{-1}^1{w(x)\prod_{\substack{i=0 \\ i \neq n-j}}^n{\frac{x-(-x_{n-i}^{(n)})}{-x_j^{(n)}-(-x_{n-i}^{(n)})}} \dif x} \\
-      &= \int_{-1}^1{w(x)\prod_{\substack{i=0 \\ i \neq j}}^n{\frac{(-1)(-x - x_i^{(n)})}{(-1)(x_j^{(n)}-x_i^{(n)})}} \dif x} \\
-      &= \int_{-1}^1{w(x)L_j^{(n)}(-x) \dif x} \\
-      &= \int_{-1}^1{w(-x)L_j^{(n)}(-x) \dif x} \\
-      &= -\int_1^{-1}{w(y)L_j^{(n)}(y) \dif y} \\
-      &= \int_{-1}^1{w(y)L_j^{(n)}(y) \dif y} \\
-      &= \alpha_j^{(n)}.
+      &= \int_{-1}^1{w(x)L_{n-j}^{(n)}(x) \dif x}
+      = \int_{-1}^1{w(x)\prod_{\substack{i=0 \\ i \neq n-j}}^n{\frac{x-x_i^{(n)}}{x_{n-j}^{(n)}-x_i^{(n)}}} \dif x} \\
+      &= \int_{-1}^1{w(x)\prod_{\substack{i=0 \\ i \neq n-j}}^n{\frac{x-(-x_{n-i}^{(n)})}{-x_j^{(n)}-(-x_{n-i}^{(n)})}} \dif x}
+      = \int_{-1}^1{w(x)\prod_{\substack{i=0 \\ i \neq j}}^n{\frac{(-1)(-x - x_i^{(n)})}{(-1)(x_j^{(n)}-x_i^{(n)})}} \dif x} \\
+      &= \int_{-1}^1{w(x)L_j^{(n)}(-x) \dif x}
+      = \int_{-1}^1{w(-x)L_j^{(n)}(-x) \dif x} \\
+      &= -\int_1^{-1}{w(y)L_j^{(n)}(y) \dif y}
+      = \int_{-1}^1{w(y)L_j^{(n)}(y) \dif y} = \alpha_j^{(n)}.\\
     \end{split}
   \end{equation*}
   \qedhere \ fa
