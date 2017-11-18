@@ -1,0 +1,60 @@
+%%% Local Variables:
+%%% TeX-master: "ana3-ue05"
+%%% End:
+
+\begin{exercise}
+  Für $f \in L^1(\R), T>0$ sei $P_T f$ durch $P_T f(x)=\sum_{k \in \Z}{f(x+2kT)}$ definiert. Zeigen Sie, dass diese Reihen in der $L^1([-T,T])$-Norm unbedingt konvergieren, und dass die so definierte Funktion $2T$-periodisch ist. Für die Fourierreihenentwicklung
+  \begin{equation*}
+    P_T f(x)=\frac{1}{\sqrt{2\pi}} \sum_{n \in \Z}{c_n \exp\left(\frac{\i n\pi x}{T}\right)}
+  \end{equation*}
+  drücke man die Koeffizienten $c_n$ durch $\fouriertransform{f}$ aus.
+\end{exercise}
+
+\begin{proof}
+   Mit $\norm{\cdot}_1$ bezeichnen wir die $L^1([-T,T])$-Norm. Außerdem definieren wir $f_k(x):=f(x+2kT)$. Wir zeigen zuerst die unbedingte Konvergenz indem wir zeigen, dass $P_T f = \sum_{k \in \Z}{f_k}$ in der $L^1([-T,T])$-Norm absolut konvergiert.
+   \begin{equation}
+     \label{eq:absolute-convergence}
+     \sum_{k \in \Z}{\norm{f_k}_1}=\sum_{k \in \Z}{\int_{-T}^T{\abs{f(x+2kT)} \dif x}}
+     = \sum_{k \in \Z}{\int_{-T+2kT}^{T+2kT}{\abs{f} \dif \lambda}}
+     = \int_\R{\abs{f} \dif \lambda}
+     < \infty.
+   \end{equation}
+  Damit folgt auch insbesondere, dass $P_T f$ in $L^1([-T,T])$ liegt.
+
+  Die $2T$-Periodizität sehen wir aufgrund von
+  \begin{equation*}
+    P_T f(x + 2T) = \sum_{k \in \Z}{f(x + 2(k+1)T)} \stackrel{\text{unb. Konv.}}{=} \sum_{k \in \Z}{f(x + 2kT)} = P_T f(x).
+  \end{equation*}
+
+  Nun zur Berechnung der Fourierkoeffizienten. Wir definieren $g(x):=P_T f(xT/\pi)$ womit gilt:
+  \begin{equation*}
+    \begin{split}
+      \fouriertransform{g}(n)
+      & =\frac{1}{\sqrt{2\pi}} \int_{-\pi}^\pi{g(x)\exp(-\i nx) \dif x} \\
+      & =\frac{1}{\sqrt{2\pi}} \int_{-\pi}^\pi{\sum_{k \in \Z}{f \left( \frac{xT}{\pi} + 2kT \right)} \exp(-\i nx) \dif x} \\
+      &= \frac{1}{\sqrt{2\pi}} \int_{-T}^T{\sum_{k \in \Z}{f(y + 2kT)} \exp \left( -\frac{\i ny\pi}{T} \right) \frac{\pi}{T} \dif y}.
+    \end{split}
+  \end{equation*}
+  Für die Partialsummen dieser Reihe gilt $\abs{\sum_{k \in \Z}{f(y+2kT) \exp (-\i n\pi y/T)}} \leq \sum_{k \in \Z}{\abs{f(y+2kT)}}$ wobei die rechte Seite integrierbar ist wegen
+  \begin{equation*}
+    \int_{-T}^{T}{\sum_{k \in \Z}{\abs{f(y+2kT)}} \dif y}
+    = \norm{\sum_{k \in \Z}{\abs{f_k}}}_1
+    \leq \sum_{k \in \Z}{\norm{\abs{f_k}}_1}
+    \stackrel{(\ref{eq:absolute-convergence})}{<} \infty.
+  \end{equation*}
+  Damit haben wir eine integrierbare Majorante für die Partialsummen der Reihe gefunden und wir können nach dem Satz von der dominierten Konvergenz Integration und Summation vertauschen. Damit folgt
+  \begin{equation*}
+    \begin{split}
+      \fouriertransform{g}(n)
+      &=\frac{1}{T}\sqrt{\frac{\pi}{2}} \sum_{k \in \Z}{\int_{-T}^T{f(y+2kT) \exp \left( - \frac{\i ny\pi}{T} \right) \dif y}} \\
+      &=\frac{1}{T} \sqrt{\frac{\pi}{2}} \sum_{k \in \Z}{\int_{-T+2kT}^{T+2kT}{f(x)\exp \left( -\frac{\i n\pi(x-2kT)}{T} \right) \dif x}} \\
+      &=\frac{1}{T} \sqrt{\frac{\pi}{2}} \int_\R{f(x) \exp \left( - \frac{\i n\pi x}{T} \right) \dif x} \\
+      &= \frac{\pi}{T}\fouriertransform{f} \left( \frac{n\pi}{T} \right).
+    \end{split}
+  \end{equation*}
+
+  Somit gilt dann die Fourierreihenentwicklung
+  \begin{equation*}
+    P_T f(x)=\sum_{n \in \Z}{\frac{\pi}{T} \fouriertransform{f} \left( \frac{n\pi}{T} \right) \exp \left(\frac{\i n\pi x}{T}\right)}.
+  \end{equation*}
+\end{proof}

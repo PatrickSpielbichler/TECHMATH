@@ -1,0 +1,12 @@
+%%% Local Variables:
+%%% TeX-master: "ana3-ue04"
+%%% End:
+
+\begin{exercise}
+  Durch $\sup{\abs{f(x)}}+\sup{\abs{f'(x)}}$ wird auf $C^1([0,1])$ (in $[0,1]$ stetig differenzierbar mit einseitigen Ableitungen bei $0$ und $1$) eine Norm definiert. Ist $C^1([0,1])$ mit dieser Norm vollständig?
+\end{exercise}
+\begin{proof}
+  Wir definieren $\norm{f}_C:=\sup{\abs{f(x)}}+\sup{\abs{f'(x)}}$ und damit gilt sofort $\norm{f}_C=\norm{f}_\infty + \norm{f'}_\infty$. Somit folgen die Normeigenschaften sofort aus den Normeigenschaften der Supremumsnorm und der Linearität des Differentialoperators.
+
+  Nun zeigen wir noch die Vollständigkeit. Sei dazu $(f_n)$ eine Cauchyfolge in $C^1([0,1])$ bezüglich $\norm{\cdot}_C$. Damit gibt es für alle $\varepsilon>0$ ein $n_0\in \N$ sodass für alle $n,m \geq n_0$ gilt: $\norm{f_n-f_m}_C = \norm{f_n-f_m}_\infty + \norm{f_n'-f_m'}_\infty<\varepsilon$. Also gilt insbesondere $\norm{f_n-f_m}_\infty < \varepsilon$ und $\norm{f_n'-f_m'}_\infty<\varepsilon$. Also sind $(f_n)$ und $(f_n')$ Cauchyfolgen in $C([0,1])$ bezüglich der Supremumsnorm. Da $C([0,1])$ mit der Supremumsnorm vollständig ist, konvergieren die beiden Folgen (bezüglich $\norm{\cdot}_\infty$). Konvergenz bezüglich der Supremumsnorm bedeutet gleichmäßige Konvergenz. Damit konvergiert $(f_n)$ in der Supremumsnorm gegen eine stetig differenzierbare Grenzfunktion $f$ wobei $f'=\lim_{n\to\infty}f_n'$ gilt. Somit folgt aus $\norm{f_n-f}_C=\norm{f_n-f}_\infty + \norm{f_n'-f'}_\infty$ die Konvergenz von $(f_n)$ bezüglich $\norm{\cdot}_C$.
+\end{proof}

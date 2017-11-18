@@ -1,0 +1,30 @@
+%%% Local Variables:
+%%% TeX-master: "ana3-ue04"
+%%% End:
+
+\begin{exercise}
+  Zu zeigen: In einem unendlichdimensionalen Hilbertraum ist die Einheitskugel nicht relativ kompakt.
+
+  Hinweis: Betrachten Sie Überdeckungen mit $\rho$-Kugeln und $e_i \in B(\rho,x_i)$ für geeignetes $\rho$.
+\end{exercise}
+\begin{proof}
+  Sei ${(a_i)}_{i \in I}$ eine unendliche topologische Basis des Hilbertraums und sei $E \subset I$ ab\-zähl\-bar unendlich. Dann erhalten wir mit dem Gram-Schmidt-Verfahren ein abzählbares Orthonormalsystem $B:={(b_i)}_{i \in E}$.
+
+  Wir betrachten nun den Abschluss der Einheitskugel $S:=\closure{B(0,1)}$. Wegen $\norm{b_i}=1$ folgt $\forall i \in E: b_i \in S$. Für $i \neq j \in E$ folgt
+
+  \begin{equation*}
+    \norm{b_i-b_j}={(\dotproduct{b_i-b_j}{b_i-b_j})}^{\frac{1}{2}}={(\underbrace{\dotproduct{b_i}{b_i}}_{=1}+\underbrace{\dotproduct{b_i}{b_j}}_{=0}+ \underbrace{\dotproduct{b_j}{b_i}}_{=0} + \underbrace{\dotproduct{b_j}{b_j}}_{=1})}^{\frac{1}{2}} = \sqrt{2}.
+  \end{equation*}
+
+  Sei nun ${(x_i)}_{i \in J}$ eine endliche $\rho$-Überdeckung von $S$ mit $\rho:=\frac{1}{\sqrt{2}}$. Außerdem sei $i \in E$ beliebig und $j \in J$ so, dass $b_i \in B(x_j,\rho)$. Sei weiters $k \in E$ mit $k \neq i$. Dann gilt
+
+  \begin{equation*}
+    \begin{split}
+      \norm{b_k-x_j}=\norm{b_k-b_i+b_i-x_j}
+      =\norm{b_k-b_i-(x_j-b_i)}
+      &\geq \underbrace{\norm{b_k-b_i}}_{=\sqrt{2}} - \underbrace{\norm{x_j-b_i}}_{< \rho=\frac{1}{\sqrt{2}}} \\
+      &> \sqrt{2}-\frac{1}{\sqrt{2}}=\frac{1}{\sqrt{2}}=\rho.
+    \end{split}
+  \end{equation*}
+  Damit ist in jeder $\rho$-Kugel höchstens ein $b_i$ enthalten und damit kann es keine endliche $\rho$-Überdeckung von $S$ geben. Also ist $S$ nicht totalbeschränkt. Da Hilberträume vollständig sind, ist also $S$ nicht kompakt und damit ist die Einheitskugel nicht relativ kompakt.
+\end{proof}

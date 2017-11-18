@@ -1,0 +1,65 @@
+%%% Local Variables:
+%%% TeX-master: "num-ue06"
+%%% End:
+
+\begin{exercise}
+  Mit wievielen Funktionsauswertungen kann das Integral $\int_0^1{\frac{\dif x}{1+2x}}$ mit einem Fehler kleiner als $10^{-s}$ berechnet werden?
+
+  \begin{enumerate}[(a)]
+  \item Mit Hilfe der summierten Trapezregel?
+  \item Mit Hilfe der summierten Simpson-Regel?
+  \end{enumerate}
+  Vergleichen Sie die Ergebnisse für $s=4$ und $s=8$.
+\end{exercise}
+\begin{proof}
+  \begin{enumerate}[(a)]
+  \item Für die summierte Trapezregel gilt die Darstellung
+
+    \begin{equation*}
+      Q(f)-Q_h^{(1)}(f)=-\frac{b-a}{12}h^2 f''(\xi).
+    \end{equation*}
+    Da $f''(x)=\frac{8}{{(1+2x)}^3}$ gilt
+
+    \begin{equation*}
+      \abs{Q(f)-Q_h^{(1)}(f)}=\frac{8}{12{(1+2\xi)}^3}h^2 \leq \frac{2}{3}h^2.
+    \end{equation*}
+    Wir setzen also $\frac{2}{3}h^2 < 10^{-s}$ voraus und somit gilt
+
+    \begin{equation*}
+      \frac{2}{3}h^2 < \frac{1}{10^s} \iff h < \sqrt{\frac{3}{2}} \cdot 10^{\frac{s}{2}} \iff N=\frac{1}{h} > \sqrt{\frac{2}{3}} \cdot 10^{\frac{s}{2}}.
+    \end{equation*}
+  \item Für die summierte Simpson-Regel gilt die Darstellung
+
+    \begin{equation*}
+       Q(f)-Q_h^{(2)}(f)=-\frac{b-a}{2880}h^4 f^{(4)}(\xi).
+    \end{equation*}
+    Wegen $f^{(4)}(x)=\frac{384}{{(1+2x)}^5}$ gilt
+
+    \begin{equation*}
+      \abs{Q(f)-Q_h^{(2)}(f)}=\frac{384 h^4}{2880{(1+2x)}^5} \leq \frac{2}{15}h^4
+    \end{equation*}
+    Wenn wir $\frac{2}{15}h^4 < 10^{-s}$ voraussetzen, folgt
+
+    \begin{equation*}
+      \frac{2}{15}h^4 < \frac{1}{10^s} \iff h < \sqrt[4]{\frac{15}{2}}\frac{1}{10^{\frac{s}{4}}} \iff N=\frac{1}{h} > \sqrt[4]{\frac{2}{15}}10^{\frac{s}{4}}.
+    \end{equation*}
+  \end{enumerate}
+
+  Hier werden Trapez- und Simpson-Regel für $s \in \{4,8\}$ verglichen:
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|}
+      \hline
+      Quadraturformel & N & Anzahl Funktionsauswertungen \\
+      \hline
+      Trapezregel $s=4$ & $>82$ & $>83$ \\
+      \hline
+      Trapezregel $s=8$ & $>8165$ & $>8166$ \\
+      \hline
+      Simpson-Regel $s=4$ & $>7$ & $>15$ \\
+      \hline
+      Simpson-Regel $s=8$ & $>61$ & $>122$ \\
+      \hline
+    \end{tabular}
+  \end{center}
+
+\end{proof}
