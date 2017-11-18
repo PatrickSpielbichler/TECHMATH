@@ -3,16 +3,66 @@
 %%% End:
 
 \begin{exercise}
-	Bestimmen Sie die Koeffizienten der Reihendarstellung 
-	\begin{equation*}
-		f(x) := \sum_{n=1}^\infty b_n sin(n \frac{\pi}{T} x), x \in [-T, T] \\	
-	\end{equation*}
-	für die Funktion $f: [-T, T] \to \R, f(x) = x$ und damit
-	\begin{equation*}
-	\sum_{n=1}^\infty \frac{1}{n^2}
-	\end{equation*}
+	Entwickeln Sie die Funktion $f: [-\pi, \pi] \to \R, x \mapsto |x|$ in eine Cosinusreihe und berechnen Sie damit $\sum_{n=0}^{\infty} \frac{1}{(2n+1)^4}$
 \end{exercise}
 
 \begin{proof}
+	Wir bestimmen zunächst die fouriertransformierte Funktion von f (Zerlegen der Integrale, Einsetzen der Definition von Sinus und Cosinus sowie partielles Integrieren):
 	
+	\begin{equation*}
+	\begin{split}
+	\sqrt{2\pi} \hat{f}(n) & = \int_{-\pi}^{\pi} f(x) e^{-inx}dx \\
+	& = \int_{-\pi}^{\pi} |x| e^{-inx}dx \\
+	& = \int_{0}^{\pi} x e^{-inx}dx + \int_{0}^{\pi} x e^{inx}dx \\
+	& = 2 Re( \int_{0}^{\pi} x e^{inx}dx )
+	\end{split}
+	\end{equation*}
+	
+	Wir berechnen nun das Integral innerhalb des Realteils:
+	\begin{equation*}
+	\begin{split}
+	\int_{0}^{\pi} x e^{inx}dx & = \frac{x e^{inx}}{in} \vline_{x=0}^{x=\pi} - \frac{1}{in} \int_{0}^{\pi} e^{inx}dx \\
+	& = -i \frac{\pi \cos{n \pi }}{n} + \frac{cos{n \pi}-1}{n^2} \\
+	& = \frac{(-1)^n - 1}{n^2} - i \frac{(-1)^n \pi}{n} \\
+	\end{split}
+	\end{equation*}
+	
+	Damit gilt also (unter Verwendung von Seite 61):
+	\begin{equation*}
+	\fouriertransform{f}(n) = \frac{2}{\sqrt{2\pi}} \frac{(-1)^n - 1}{n^2} = c_n
+	\end{equation*}
+	\begin{equation*}
+	c_0 = \frac{1}{\sqrt{2\pi}} \int_{-\pi}^{\pi} |x| dx = \frac{\pi^2}{\sqrt{2\pi}}
+	\end{equation*}
+	
+	Nun berechnen wir die Koeffizienten $a_n$ (Cosinusreihe, daher $b_n$ = 0):
+	\begin{equation*}
+	\begin{split}
+	f(x) & = \frac{1}{\sqrt{2\pi}} \sum_{n \in \Z} c_n e^{inx} \\
+	& = \frac{1}{\sqrt{2\pi}} \bigg(c_0 + \sum_{n \in \N} (c_n + c_{-n}) \cos{(nx)} +  \underbrace{\sum_{n \in \N} (c_n - c_{-n}) \sin{(nx)}}_{=0} \bigg) \\
+	&  = \frac{1}{\sqrt{2\pi}} \bigg( \frac{\pi^2}{\sqrt{2\pi}} + 2 \sum_{n \in \N} \frac{2}{\sqrt{2\pi}} \frac{(-1)^n - 1}{n^2} \cos{(nx)} \bigg) \\
+	& = \frac{\pi}{2} + \sum_{n \in \N} \frac{2}{\pi} \frac{(-1)^n - 1}{n^2} \cos{(nx)}
+	\end{split}
+	\end{equation*}
+	Aus dieser Darstellung gilt: $a_0 = \frac{\pi}{2}, a_n = \frac{2}{\pi} \frac{(-1)^n - 1}{n^2} = -\frac{4}{\pi n^2}$ für $n>0$ ungerade, sonst 0.
+	
+	Nun müssen wir noch den Wert von $\sum_{n=0}^{\infty} \frac{1}{(2n+1)^4}$ berechnen. Dazu sei wie im vorigen Beispiel: $\normE{f}{2}^2 = \sum_{n \in \Z} |\fouriertransform{f}(n)|^2$ und $\frac{2\pi^3}{3} = \int_{-\pi}^{\pi} x^2 dx = \normE{f}{2}^2$. Damit rechnen wir unter Verwendung von n = 2m-1 (weil gerade Koeffizienten 0 sind):
+	
+	\begin{equation*}
+	\begin{split}
+	\frac{2\pi^3}{3} = \sum_{n \in \Z} |\fouriertransform{f}(n)|^2 & = |\fouriertransform{f}(0)|^2 + 2 \sum_{n \in \N} |\fouriertransform{f}(0)|^2\\
+	& = | \frac{\pi^2}{\sqrt{2\pi}} | + 2 \sum_{n \in \N} \bigg| \frac{2}{\sqrt{2\pi}} \frac{(-1)^n - 1}{n^2} \bigg|^2 \\
+	& = \frac{\pi^3}{2} + 2 \sum_{m \in \N} \bigg| \frac{2}{\sqrt{2\pi}} \frac{-2}{(2m-1)^2} \bigg|^2 \\
+	& = \frac{\pi^3}{2} + 2 \frac{16}{2\pi} \sum_{m \in \N} \frac{1}{(2m-1)^4} \\
+	& = \frac{\pi^3}{2} + \frac{16}{\pi} \sum_{m \in \N} \frac{1}{(2m-1)^4}
+	\end{split}	
+	\end{equation*}
+	
+	Und somit weiters durch Umformung von der obrigen Gleichung:
+	\begin{equation*}
+	\bigg(\frac{2\pi^3}{3} - \frac{3\pi^3}{6} \bigg) * \frac{\pi}{16} = \frac{\pi^4}{96} =  \sum_{m \in \N} \frac{1}{(2m-1)^4} = \sum_{n = 0}^{\infty} \frac{1}{(2n+1)^4}
+	\end{equation*}
+	
+	Somit gilt die Behauptung!
+
 \end{proof}

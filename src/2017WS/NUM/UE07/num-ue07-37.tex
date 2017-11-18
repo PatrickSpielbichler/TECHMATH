@@ -1,5 +1,48 @@
+%%% Local Variables:
+%%% TeX-master: "num-ue07"
+%%% End:
+
 \begin{exercise}
+  Sei $Q_n(f) = \sum_{j=0}^n{\alpha_j^{(n)}f(x_j^{(n)})}$ die Gauß-Quadratur auf $[-1,1]$ zu der zulässigen Gewichtsfunktion $w$ mit $x_0^{(n)}<x_1^{(1)}< \cdots <x_n^{(n)}$. Zeigen Sie: Wenn $w(x)=w(-x)$ für alle $x \in (-1,1)$, dann gilt $\alpha_j^{(n)}=\alpha_{n-j}^{(n)}$ und $x_j^{(n)}=-x_{n-j}^{(n)}$ für $j=0, \dots, n$.
 \end{exercise}
 
 \begin{proof}
+  Wir definieren eine zweite Quadraturformel $\overline{Q}_n(f):=\sum_{j=0}^n{\alpha_{n-j}^{(n)} f(-x_{n-j}^{(n)})}$ und zeigen, dass sie ebenfalls eine Gauß-Quadratur ist.
+  Damit folgt dann, dass die Mengen der Quadraturpunkte und der Gewichte der beiden Quadraturformeln jeweils gleich sind.
+  Laut Skriptum ist die Eigenschaft Gauß-Quadraturformel zu sein äquivalent zur Bedingung $\dotproduct{\overline{q_{n+1}}}{q}_w=0$ für alle $q \in \Pi_n$ und $\overline{q_{n+1}}(x):=\prod_{j=0}^n{(x-(-x_j^{(n)}))}$.
+  Da das Skalarprodukt linear im zweiten Argument ist, reicht es, die Eigenschaft für Monome $x^m \in \Pi_n$ zu zeigen:
+  \begin{equation*}
+    \begin{split}
+      \dotproduct{\overline{q_{n+1}}}{x^m}_w
+      &= \int_{-1}^1{w(x)\overline{q_{n+1}}(x)x^m \dif x} \\
+      &= \int_{-1}^1{w(-x)\overline{q_{n+1}}(x)x^m \dif x} \\
+      &= -\int_1^{-1}{w(y)\overline{q_{n+1}}(-y){(-1)}^m y^m \dif y} \\
+      &= {(-1)}^m \int_{-1}^1{w(y)\prod_{j=0}^n{(-y-(-x_j^{(n)}))}y^m \dif y} \\
+      &= {(-1)}^{m+n+1} \int_{-1}^1{w(y)\prod_{j=0}^n{y-x_j^{(n)}} y^m \dif y} \\
+      &= {(-1)}^{m+n+1} \int_{-1}^1{w(y)q_{n+1}(y) y^m\dif y} \\
+      &= {(-1)}^{m+n+1} \dotproduct{q_{n+1}}{x^m}_w \\
+      &= 0.
+    \end{split}
+  \end{equation*}
+  Wegen der Eindeutigkeit der Gaußquadratur folgt dann
+  $\mathset{x_j^{(n)}:j=0,\dots,n}=\mathset{-x_{n-j}^{(n)}:j=0,\dots,n}$
+  sowie
+  $\mathset{\alpha_j^{(n)}:j=0,\dots,n}=\mathset{\alpha_{n-j}^{(n)}:j=0,\dots,n}$.
+
+  Laut Voraussetzung gilt $x_0^{(n)}< \cdots <x_n^{(n)}$, also auch $-x_n^{(n)}< \cdots < -x_0^{(n)}$.
+  Da die Menge der Quadraturpunkte gleich ist, folgt $x_j^{(n)}=-x_{n-j}^{(n)}$. Für die Quadraturgewichte folgt dann
+  \begin{equation*}
+    \begin{split}
+      \alpha_{n-j}^{(n)}
+      &= \int_{-1}^1{w(x)L_{n-j}^{(n)}(x) \dif x}
+      = \int_{-1}^1{w(x)\prod_{\substack{i=0 \\ i \neq n-j}}^n{\frac{x-x_i^{(n)}}{x_{n-j}^{(n)}-x_i^{(n)}}} \dif x} \\
+      &= \int_{-1}^1{w(x)\prod_{\substack{i=0 \\ i \neq n-j}}^n{\frac{x-(-x_{n-i}^{(n)})}{-x_j^{(n)}-(-x_{n-i}^{(n)})}} \dif x}
+      = \int_{-1}^1{w(x)\prod_{\substack{i=0 \\ i \neq j}}^n{\frac{(-1)(-x - x_i^{(n)})}{(-1)(x_j^{(n)}-x_i^{(n)})}} \dif x} \\
+      &= \int_{-1}^1{w(x)L_j^{(n)}(-x) \dif x}
+      = \int_{-1}^1{w(-x)L_j^{(n)}(-x) \dif x} \\
+      &= -\int_1^{-1}{w(y)L_j^{(n)}(y) \dif y}
+      = \int_{-1}^1{w(y)L_j^{(n)}(y) \dif y} = \alpha_j^{(n)}.\\
+    \end{split}
+  \end{equation*}
+  \qedhere \ fa
 \end{proof}

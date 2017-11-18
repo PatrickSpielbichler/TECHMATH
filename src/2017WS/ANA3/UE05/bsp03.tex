@@ -3,16 +3,40 @@
 %%% End:
 
 \begin{exercise}
-	Bestimmen Sie die Koeffizienten der Reihendarstellung 
-	\begin{equation*}
-		f(x) := \sum_{n=1}^\infty b_n sin(n \frac{\pi}{T} x), x \in [-T, T] \\	
-	\end{equation*}
-	für die Funktion $f: [-T, T] \to \R, f(x) = x$ und damit
-	\begin{equation*}
-	\sum_{n=1}^\infty \frac{1}{n^2}
-	\end{equation*}
+	Berechnen Sie die Fouriertransformierte der Funktion $\mathbbm{1}_{[-T, T]} \in L^1(\R)$ und damit $\int_\R \frac{\sin^2x}{x^2}$.
 \end{exercise}
 
 \begin{proof}
+	Wir berechnen uns gemäß Formel 3.11 die Fouriertransformierte von f in $L^1$:
+	\begin{equation*}
+	f^\wedge(\xi) := \frac{1}{(2\pi)^{\frac{n}{2}}} \int_{\R^n} e^{-i\xi x} f(x) d\lambda^n(x)
+	\end{equation*}
 	
+	Also gilt (unter Berücksichtigung, dass das Lebesgue-Integral auch Riemann-integrierbar ist): 
+	\begin{equation*}
+	\begin{split}
+	\sqrt{2\pi} f^\wedge(\xi) & = \int_{\R} e^{-i\xi x} \mathbbm{1}_{[-T, T]} d\lambda(x)\\
+	& = \int_{-T}^{T} e^{-i\xi x} dx \\
+	& = i \frac{e^{-i\xi x}}{\xi} \bigg\vert_{x=-T}^{x=T} \\
+	& = i \frac{e^{-i T \xi} - e^{i T \xi}}{\xi} \\
+	& = i \frac{\cos(T \xi) - i\sin(T \xi) - \cos(T \xi) - i\sin(T \xi)}{\xi} \\
+	& = \frac{2 \sin(T\xi)}{\xi}
+	\end{split}
+	\end{equation*}
+	
+	Nach Satz 3.3.2 kann die Fouriertransformation F auf $S(\R^n)$ stetig zu einer surjektiven Isometrie $L^2(\R^n)$ auf sich fortgesetzt werden (schönes F). Weiters gilt nach Proposition 3.3.3 für $f \in L^1 \cap L^2$ gilt $\mathcal{F}f = f^\wedge$, also $< f^\wedge, g^\wedge> = <f, g>$ für $f, g \in S(\R^n)$.
+	
+	Die Indikatorfunktion liegt dicht $L^p$ für beliebiges p. Somit gilt auch $\mathbbm{1}_{[-1, 1]} \in L^1 \cap L^2$. Somit zeigen wir weiter gleich unter der Tatsache, dass $\mathcal{F}$ eine Isometrie ist:
+	\begin{equation*}
+	\begin{split}
+	\frac{2}{\pi} \int_\R \frac{\sin^2x}{x^2}dx & = \int_\R \bigg\vert \frac{2}{\sqrt{2\pi}} \frac{\sin^2x}{x^2} \bigg\vert^2dx \\
+	& = \normE{f^\wedge}{2}^2 = \normE{f}{2}^2 \\
+	& = \underbrace{\int_{\R} \mathbbm{1}_{[-1, 1]}(x) dx}_{=2}
+	\end{split}
+	\end{equation*}
+	
+	Somit haben wir also:
+	\begin{equation*}
+	\int_\R \frac{\sin^2x}{x^2}dx = \pi
+	\end{equation*}
 \end{proof}

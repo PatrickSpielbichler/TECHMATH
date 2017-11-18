@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "Starting LaTeX builds"
 mkdir _build
+mkdir _build/${TRAVIS_BRANCH}
 
 for semester in ./src/*/
 do
@@ -8,14 +9,14 @@ do
     semester=${semester%*/}
     semester=${semester##*/}
 
-    mkdir ../../_build/${semester}
+    mkdir ../../_build/${TRAVIS_BRANCH}/${semester}
     for subject in ./*/
     do
         cd ${subject}
         subject=${subject%*/}
         subject=${subject##*/}
 
-        mkdir ../../../_build/${semester}/${subject}
+        mkdir ../../../_build/${TRAVIS_BRANCH}/${semester}/${subject}
 
         for exercise in ./*/
         do
@@ -27,7 +28,7 @@ do
                 if [ -f ${filename}.tex ]; then
                     /tmp/texlive/bin/x86_64-linux/pdflatex -interaction=nonstopmode -halt-on-error ${filename}.tex
                     /tmp/texlive/bin/x86_64-linux/pdflatex -interaction=nonstopmode -halt-on-error ${filename}.tex
-                    mv ${filename}.pdf ../../../../_build/${semester}/${subject}/${filename}.pdf
+                    mv ${filename}.pdf ../../../../_build/${TRAVIS_BRANCH}/${semester}/${subject}/${filename}.pdf
                 fi
                 cd ../
             fi
